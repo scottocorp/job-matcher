@@ -1,1 +1,1 @@
--e git+ssh://git@github.com/scottocorp/job-matcher.git@e6f272ebfd6f9ab400f9b2ecaf4fdc686a1ac50b#egg=job_matcher_core
+-e git+ssh://git@github.com/scottocorp/job-matcher.git@bc4e20ce5c642dc7304211417c18c1e3b644d4ba#egg=job_matcher_core
