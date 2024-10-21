@@ -1,0 +1,29 @@
+*.DS_Store
+Thumbs.db
+web/assets/bower_components/
+web/node_modules/
+.idea/
+tmp
+
+__pycache__/
+*.py[cod]
+assets/python/**/config.ini
+*ipynb_checkpoints
+.venv/
+
+.env
+
+# terraform
+terraform.tfstate
+terraform.tfstate.backup
+.terraform*
+*.tfvars
+tfplan
+out.json
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+*.zip

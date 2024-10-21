@@ -1,0 +1,8 @@
+[project]
+name = "job_matcher_core"
+version = "0.1.0"
+description = "job_matcher_core"
+
+[build-system]
+build-backend = "flit_core.buildapi"
+requires = ["flit_core >=3.2,<4"]
