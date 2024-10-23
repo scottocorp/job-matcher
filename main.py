@@ -1,3 +1,3 @@
 from job_matcher_core import matcher
 
-matcher.match_display()
+matcher.match_naive()

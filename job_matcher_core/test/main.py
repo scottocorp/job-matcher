@@ -11,7 +11,7 @@ def match_test():
     base_path = path.dirname(__file__)    
     jobseekers_test = load_items(JobSeeker, f'{base_path}/jobseekers.csv')
     jobs_test = load_items(Job, f'{base_path}/jobs.csv')
-    return matcher.match(jobseekers_test, jobs_test)
+    return matcher.match_and_sort(jobseekers_test, jobs_test)
 
 
 class TestJobMatcherMethods(unittest.TestCase):

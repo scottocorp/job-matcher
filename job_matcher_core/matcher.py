@@ -3,7 +3,7 @@ from job_matcher_core.classes.job import Job
 from job_matcher_core.common.utils import load_items
 
 
-def match(jobseekers, jobs):
+def match_and_sort(jobseekers, jobs):
 
     matched = []
 
@@ -29,14 +29,15 @@ def match(jobseekers, jobs):
         x['job_id']))
 
 
-def match_main():
-    jobseekers = load_items(JobSeeker)
-    jobs = load_items(Job)
-    return match(jobseekers, jobs)
-
-
-def match_display():
-    matched_and_sorted = match_main()
+def match_display(matched_and_sorted):
     for item in matched_and_sorted:
         print(f'{item['jobseeker_id']}, {item['jobseeker_name']}, {item['job_id']}, {item['job_title']}, {item['matching_skill_count']}, {round(item['matching_skill_percent'])}')
             
+
+def match_naive():
+    jobseekers = load_items(JobSeeker)
+    jobs = load_items(Job)
+    matched_and_sorted = match_and_sort(jobseekers, jobs)
+    match_display(matched_and_sorted)
+
+
