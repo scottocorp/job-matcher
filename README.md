@@ -52,5 +52,5 @@ python -m unittest job_matcher_core/test/main.py
 ```
 ## TODO:
 - More unit tests
-- Improving the efficiency: Currently I'm loading all the jobseekers & all the jobs and then doing the match. My next step was to first load all the jobs, then calculate the best match for each jobseeker, one at a time.
+- Improving the efficiency: I've updated the repo by using Pandas to better handle large inputs.
 

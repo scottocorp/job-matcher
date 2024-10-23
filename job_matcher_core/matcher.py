@@ -1,6 +1,24 @@
 from job_matcher_core.classes.jobseeker import JobSeeker
 from job_matcher_core.classes.job import Job
-from job_matcher_core.common.utils import load_items
+from job_matcher_core.common.utils import load_items_from_csv, load_items_from_df
+import pandas as pd
+
+def match_optimisation_01():
+    jobs = load_items_from_csv(Job)
+    # In this method we use pandas to load the jobseeker.csv file in chunks, to better handle large inputs:
+    df_iter = pd.read_csv(JobSeeker.csv_path, iterator=True, chunksize=5)
+    while True: 
+        try:
+            # Load a chunk of data into the dataframe:
+            df = next(df_iter)
+            # print(f'Another chunk \n {df}')
+            jobseekers = load_items_from_df(JobSeeker, df)
+        except StopIteration:
+            # print('Data ingestion completed.')
+            break
+
+        matched_and_sorted = match_and_sort(jobseekers, jobs)
+        match_display(matched_and_sorted)
 
 
 def match_and_sort(jobseekers, jobs):
@@ -35,8 +53,8 @@ def match_display(matched_and_sorted):
             
 
 def match_naive():
-    jobseekers = load_items(JobSeeker)
-    jobs = load_items(Job)
+    jobseekers = load_items_from_csv(JobSeeker)
+    jobs = load_items_from_csv(Job)
     matched_and_sorted = match_and_sort(jobseekers, jobs)
     match_display(matched_and_sorted)
 

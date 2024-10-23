@@ -3,14 +3,14 @@ from os import path
 import json
 from job_matcher_core.classes.jobseeker import JobSeeker
 from job_matcher_core.classes.job import Job
-from job_matcher_core.common.utils import load_items
+from job_matcher_core.common.utils import load_items_from_csv
 from job_matcher_core import matcher
 
 
 def match_test():
     base_path = path.dirname(__file__)    
-    jobseekers_test = load_items(JobSeeker, f'{base_path}/jobseekers.csv')
-    jobs_test = load_items(Job, f'{base_path}/jobs.csv')
+    jobseekers_test = load_items_from_csv(JobSeeker, f'{base_path}/jobseekers.csv')
+    jobs_test = load_items_from_csv(Job, f'{base_path}/jobs.csv')
     return matcher.match_and_sort(jobseekers_test, jobs_test)
 
 
