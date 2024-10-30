@@ -1,12 +1,16 @@
 from job_matcher_core.classes.jobseeker import JobSeeker
 from job_matcher_core.classes.job import Job
-from job_matcher_core.common.utils import load_items_from_csv, load_items_from_df
+from job_matcher_core.common.utils import load_items_from_csv, load_items_from_df, get_input_paths
 import pandas as pd
 
 def match_optimisation_01():
-    jobs = load_items_from_csv(Job)
+
+    jobseekers_csv_path, jobs_csv_path = get_input_paths() 
+
+    jobs = load_items_from_csv(Job, jobs_csv_path)
+
     # In this method we use pandas to load the jobseeker.csv file in chunks, to better handle large inputs:
-    df_iter = pd.read_csv(JobSeeker.csv_path, iterator=True, chunksize=5)
+    df_iter = pd.read_csv(jobseekers_csv_path, iterator=True, chunksize=5)
     while True: 
         try:
             # Load a chunk of data into the dataframe:
